@@ -5,10 +5,10 @@ class ApplicationController < ActionController::API
   private
 
   def handle_invalid e
-    render json: { error: e.messages }, status: 422
+    render json: { errors: e.message }, status: 422
   end
 
   def handle_not_found e
-    render json: { error: "#{e.model} not found" }, status: 404
+    render json: { errors: "#{e.model} not found" }, status: 404
   end
 end
