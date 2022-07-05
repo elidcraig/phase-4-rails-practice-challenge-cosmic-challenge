@@ -12,6 +12,17 @@ class ScientistsController < ApplicationController
     render json: new_scientist, status: 201
   end
 
+  def update
+    scientist = find_scientist
+    scientist.update!(scientist_params)
+    render json: scientist, status: 202
+  end
+
+  def destroy
+    find_scientist.destroy
+    head :no_content
+  end
+
   private
 
   def find_scientist
